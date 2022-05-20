@@ -78,13 +78,13 @@ Set the config.yaml values as you want and run `python train.py -c [config file 
 
 ## Tips for Training Using This Repository
 * The code has been tested on a custom dataset and in general, it trains slightly faster than the original implementation.
-AdaBelief decreases the loss function quicker than AdamW.
+* AdaBelief optimizer decreases the loss function faster than AdamW.
 * Despite, I have refactored and optimized many parts of the codes such as loss functions and data loaders,
 it needs more optimization to work efficiently as it should. Mainly, during training,
 when it goes for calculating the loss functions, the performance drops significantly.
 * Mixed precision option seems to have a problem with MS-SSIM loss function. 
-In other words, the loss value changed to NaN during training. I plan to replace the MS-SSIM function with the official
-implementation of MS-SSIM in the Pytorch Metric library.
+In other words, the loss value changes to NaN during training. I plan to replace the MS-SSIM function with the official
+implementation of MS-SSIM in the Pytorch Metric library and test mixed precision option.
 * If you set the log and plot options in valid or test set to False in the config file, it is ignored during evaluation.
 Need to point out that during valid evaluation, it saves a model checkpoint in the result path.
 * Since the original resolution of images in valid and test sets are considered, the gpu can run out of memory in higher
