@@ -1,5 +1,6 @@
 # CURL
-Unofficial implementation of CURL: Neural Curve Layers for Global Image Enhancement paper in pytorch.
+Unofficial pytorch implementation of [CURL: Neural Curve Layers for Global Image Enhancement](https://arxiv.org/abs/1911.13175)
+paper.
 I used many parts of the [official](https://github.com/sjmoran/CURL) repository to create this repo.
 Since the official repository has some limitation such as running in batch size of 1, I have greatly changed the 
 original implementation in order to make it more usable.
@@ -8,14 +9,14 @@ This repo has these new features compared to the official one:
 1. Supporting different batch sizes (more than 1).
 2. Adding random resize and random crop augmentation.
 3. Adding cosine learning rate decay with warm up.
-4. Adding various optimizers including Adam, AdamW and AdaBelief with decoupled weight decay option.
+4. Adding more optimizers. Besides Adam, it includes AdamW and AdaBelief with decoupled weight decay option.
 5. Adding mixed precision option (it might not work properly at this stage)
-6. Adding gradients clipping.
-7. Adding optional arbitrary test set evaluation.
-8. Adding tensorboard option for saving all metrics and images of valid and test sets (optional).
-9. Adding new metrics such as PCQI.
+6. Adding gradients clipping as a regularization option.
+7. Adding test set evaluation as an optional evaluation step.
+8. Adding new metrics such as PCQI.
+9. Adding tensorboard option for saving all metrics and images of valid and test sets (optional).
 10. Using different devices during training step as well as evaluation step.
-11. Adding device option for training and evaluation steps.
+11. Adding separate device option during training and evaluation steps.
 12. Much readable and cleaner codes!
 
 
