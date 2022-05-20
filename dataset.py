@@ -5,12 +5,70 @@ import cv2
 import random
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
-from readdata import prepare_automate_dataset, prepare_operator1_dataset, prepare_operator2_dataset
+
+
+def load_adobe_5k_data(img_ids_filepath, data_dirpath):
+    """ Loads the Samsung image data into a Python dictionary
+    :returns: Python two-level dictionary containing the images
+    :rtype: Dictionary of dictionaries
+    """
+    data_dict = dict()
+
+    with open(img_ids_filepath) as f:
+        '''
+        Load the image ids into a list data structure
+        '''
+        image_ids = f.readlines()
+        # you may also want to remove whitespace characters like `\n` at the end of each line
+        image_ids_list = [x.rstrip() for x in image_ids]
+
+    idx = 0
+    idx_tmp = 0
+    img_id_to_idx_dict = {}
+
+    for root, dirs, files in os.walk(data_dirpath):
+        for file in files:
+            img_id = file.split("-")[0]
+
+            is_id_in_list = False
+            for img_id_test in image_ids_list:
+                if img_id_test == img_id:
+                    is_id_in_list = True
+                    break
+
+            if is_id_in_list:  # check that the image is a member of the appropriate training/test/validation split
+                if img_id not in img_id_to_idx_dict.keys():
+                    img_id_to_idx_dict[img_id] = idx
+                    data_dict[idx] = {}
+                    data_dict[idx]['input_img'] = None
+                    data_dict[idx]['output_img'] = None
+                    idx_tmp = idx
+                    idx += 1
+                else:
+                    idx_tmp = img_id_to_idx_dict[img_id]
+
+                if "input" in root:  # change this to the name of your
+                    # input data folder
+                    input_img_filepath = file
+                    data_dict[idx_tmp]['input_img'] = root + "/" + input_img_filepath
+
+                elif "output" in root:  # change this to the name of your
+                    # output data folder
+                    output_img_filepath = file
+                    data_dict[idx_tmp]['output_img'] = root + "/" + output_img_filepath
+
+    for idx, imgs in data_dict.items():
+        assert ('input_img' in imgs)
+        assert ('output_img' in imgs)
+
+    return data_dict
 
 
 class CustomDataset(Dataset):
     def __init__(self, data_dir, target_size, random_resize=False, random_crop=False, test_plot=False):
-        self.pairs = prepare_operator2_dataset(data_dir)
+        img_ids_filepath = ''
+        data_dirpath = ''
+        self.pairs = load_adobe_5k_data(img_ids_filepath, data_dirpath)
         self.num_samples = len(self.pairs)
         self.target_size = target_size
         self.random_crop = random_crop
