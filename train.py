@@ -159,14 +159,6 @@ def main(config):
             if mixed_precision:
                 optimizer.zero_grad()
                 scaler.scale(loss).backward(retain_graph=True)
-                # scaler.scale(rgb_loss_value).backward(retain_graph=True)
-                # scaler.scale(cosine_rgb_loss_value).backward(retain_graph=True)
-                # scaler.scale(l1_loss_value).backward(retain_graph=True)
-                # scaler.scale(hsv_loss_value).backward()
-                # scaler.scale(ssim_loss_value).backward()
-                # print(scaler._growth_tracker)
-                # scaler.scale(gradient_regularizer).backward()
-                # Since the gradients of optimizer's assigned params are unscaled, clips as usual:
                 scaler.step(optimizer)
                 scaler.update()
                 train_writer.add_scalar('scaled', scaler.get_scale(), (epoch * num_batches + batch_num))
@@ -233,7 +225,5 @@ if __name__ == "__main__":
 
     with open(config_path) as file:
         config_file = yaml.full_load(file)
-    #     for item, doc in config_file.items():
-    #         print(item, ":", doc)
 
     main(config_file)
