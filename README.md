@@ -1,5 +1,5 @@
 # CURL
-Unofficial implementation of CURL: Neural Curve Layers for Global Image Enhancement paper.
+Unofficial implementation of CURL: Neural Curve Layers for Global Image Enhancement paper in pytorch.
 I used many parts of the [official](https://github.com/sjmoran/CURL) repository to create this repo.
 Since the official repository has some limitation such as running in batch size of 1, I have greatly changed the 
 original implementation in order to make it more usable.
