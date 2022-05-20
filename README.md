@@ -10,15 +10,17 @@ This repo has these new features compared to the official one:
 4. Adding various optimizers including Adam, AdamW and AdaBelief with decoupled weight decay option.
 5. Adding mixed precision option (it might not work properly at this stage)
 6. Adding gradients clipping.
-7. Adding optional arbitrary test set evaluating.
-8. Adding tensorboard option for saving all metrics and images of valid and test sets (optional)
-9. Using different devices during training step as well as evaluation step.
-10. Adding device option for training and evaluation steps.
-11. Much readable and cleaner codes!
+7. Adding optional arbitrary test set evaluation.
+8. Adding tensorboard option for saving all metrics and images of valid and test sets (optional).
+9. Adding new metrics such as PCQI.
+10. Using different devices during training step as well as evaluation step.
+11. Adding device option for training and evaluation steps.
+12. Much readable and cleaner codes!
 
 
 ## Requirements
-Just like the original repository + [AdaBelief](https://github.com/juntang-zhuang/Adabelief-Optimizer)
+Original requirements + [AdaBelief](https://github.com/juntang-zhuang/Adabelief-Optimizer)
++ [torchmetrics](https://torchmetrics.readthedocs.io/en/stable/)
 
 ## Config File
 Using config.yaml file you can change many settings without going into the codes. In fact, 90 percent of the time you 
