@@ -96,3 +96,4 @@ I borrowed it from the official repository. I have not tested it yet.
 But, in general, you need to create a list of pairs in the form of 
 `[(input_path, target_dir), (input_path, target_dir), ...]`
 as the output of that function to work properly in the code.
+* 
