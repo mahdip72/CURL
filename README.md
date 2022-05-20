@@ -15,9 +15,8 @@ This repo has these new features compared to the official one:
 7. Adding test set evaluation as an optional evaluation step.
 8. Adding new metrics such as PCQI.
 9. Adding tensorboard option for saving all metrics and images of valid and test sets (optional).
-10. Using different devices during training step as well as evaluation step.
-11. Adding separate device option during training and evaluation steps.
-12. Much readable and cleaner codes!
+10. Adding separate device option during training and evaluation steps. 
+11. Much readable and cleaner codes!
 
 
 ## Requirements
