@@ -1,0 +1,44 @@
+pretrained_weights: D:\mehdi\projects\ImageEnhancement\curl_files\pretrained_models\epoch_510_model.pt
+#pretrained_weights: False
+num_workers: 4
+fix_seed: False
+result_path: ./results/
+
+train_settings:
+  train_path: D:\mehdi\datasets\image enhancement\global enhancing\training datasets\v4\train
+  train_batch_size: 2
+  num_epochs: 200
+  shuffle: True
+  h_input: 1000
+  w_input: 1000
+  random_resize: True
+  random_crop: True
+  mixed_precision: False
+
+valid_settings:
+  valid_path: D:\mehdi\datasets\image enhancement\global enhancing\training datasets\v4\validation
+  valid_batch_Size: 1
+  do_every: 5
+  device: cuda
+  plot: False
+  log: True
+
+test_settings:
+  test_path: D:\mehdi\datasets\image enhancement\global enhancing\test datasets\overall
+  test_batch_Size: 1
+  do_every: 5
+  device: cuda
+  plot: True
+  log: True
+
+optimizer:
+  name: adabelief
+  lr: 5e-5
+  weight_decouple: True
+  weight_decay: 0.01
+  eps: 1e-8
+  grad_clip_norm: 5
+  decay:
+    warmup: 3
+    min_lr: 1e-6
+    gamma: 1.0
