@@ -138,7 +138,7 @@ def prepare_model(device, pretrained_weights, print_model=False):
 
 def prepare_optimizer(name, net, lr, min_lr, train_samples, batch, epochs, warmup, gamma, wd,
                       weight_decouple=False, eps=1e-08):
-    if name.lower() == 'adam' and weight_decouple:
+    if name.lower() == 'adamw':
         optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, net.parameters()),
                                       lr=lr, eps=eps, weight_decay=wd)
     elif name.lower() == 'adam':

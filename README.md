@@ -18,10 +18,11 @@ This repo has these new features compared to the official one:
 
 
 ## Requirements
-Just like the original repository.
-
+Just like the original repository + [AdaBelief](https://github.com/juntang-zhuang/Adabelief-Optimizer)
 
 ## Config File
+Using config.yaml file you can change many settings without going into the codes. In fact, 90 percent of the time you 
+only need to change its values and start training. In the following every option has been explained. 
 
 ### General Settings
 **pretrained_weights**: Path of pretrained weights. \
@@ -68,3 +69,22 @@ Just like the original repository.
 **warmup**: Number of epochs for warmup. Can be a float number (e.g., 2.5). \
 **min_lr**: Minimum learning rate for learning rate scheduler. \
 **gamma**: Gamma vale for cosine weight decay parameter (e.g., 1)
+
+## Train
+Set the config.yaml values as you want and run `python train.py -c [config file path]`
+
+## Tips for training
+Despite, I have refactored and optimized many parts of the codes such as loss functions and data loaders,
+it needs more work to be efficient as it should. Mainly, during training,
+when it goes for calculating the loss functions, the performance drops 
+significantly.
+
+Mixed precision option seems to have a problem with MS-SSIM loss function. 
+In other words, the loss value changed to NaN during training. I plan to replace the MS-SSIM function with the official
+implementation of MS-SSIM in the Pytorch Metric library.
+
+If you set the log and plot options in valid or test set to False in the config file, it is ignored during evaluation.
+Need to point out that during valid evaluation, it saves a model checkpoint in the result path.
+
+Since the original resolution of images in valid and test sets are considered, the gpu can run out of memory in higher
+resolution. Therefore, I have provided device options for them in the config file.
