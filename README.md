@@ -74,7 +74,7 @@ only need to change its values and start training. In the following, every optio
 **gamma**: Gamma vale for cosine weight decay parameter (e.g., 1)
 
 ## Train
-Set the config.yaml values as you want and run `python train.py -c [config file path]`
+Set the config.yaml values as you want and run `python train.py -c [config file path]` 
 
 ## Tips for Training Using This Repository
 * The code has been tested on a custom dataset and in general, it trains slightly faster than the original implementation.
