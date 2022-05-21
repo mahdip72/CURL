@@ -67,7 +67,7 @@ only need to change its values and start training. In the following, every optio
 **weight_decay**: Weight decay (e.g., 0.01). \
 **eps**: Epsilon value in optimizers (e.g., 1e-8). \
 **grad_clip_norm**: Gradient normalization value (e.g., 5). 
-
+ 
 #### Learning Rate Decay
 **warmup**: Number of epochs for warmup. Can be a float number (e.g., 2.5). \
 **min_lr**: Minimum learning rate for learning rate scheduler. \
