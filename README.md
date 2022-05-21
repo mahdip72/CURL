@@ -72,7 +72,7 @@ only need to change its values and start training. In the following, every optio
 **warmup**: Number of epochs for warmup. Can be a float number (e.g., 2.5). \
 **min_lr**: Minimum learning rate for learning rate scheduler. \
 **gamma**: Gamma vale for cosine weight decay parameter (e.g., 1)
-
+ 
 ## Train
 Set the config.yaml values as you want and run `python train.py -c [config file path]` 
 
